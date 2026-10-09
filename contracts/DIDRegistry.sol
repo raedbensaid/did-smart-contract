@@ -33,10 +33,14 @@ function registerDID(bytes32 _identityHash) external {
     emit DIDRegistered(msg.sender, _identityHash, block.timestamp);
 }
 
-    function getDID() external view returns (DID memory) {
-        require(dids[msg.sender].owner != address(0), "DID does not exist");
-        return dids[msg.sender];
-    }
+   function getDID(address _user)
+    external
+    view
+    returns (DID memory)
+{
+    require(_exists(_user), "DID does not exist");
+    return dids[_user];
+}
 
     function hasDID(address _user) public view returns (bool) {
         return dids[_user].owner != address(0);
