@@ -22,7 +22,7 @@ contract DIDRegistry {
 
 function registerDID(bytes32 _identityHash) external {
     require(!_exists(msg.sender), "DID already registered");
-    require(_identityHash != bytes32(0), "Empty identity hash");
+    require(_identityHash != bytes32(0), "Invalid identity hash");
     DID storage userDID = dids[msg.sender];
 
     userDID.owner = msg.sender;
@@ -40,7 +40,7 @@ function registerDID(bytes32 _identityHash) external {
 {
     require(_exists(_user), "DID does not exist");
     return dids[_user];
-}
+} 
 
     function hasDID(address _user) public view returns (bool) {
         return dids[_user].owner != address(0);
@@ -48,7 +48,7 @@ function registerDID(bytes32 _identityHash) external {
 
     function updateDID(bytes32 _newIdentityHash) external {
     require(_exists(msg.sender), "DID does not exist");
-    require(_newIdentityHash != bytes32(0), "Empty identity hash");
+    require(_newIdentityHash != bytes32(0), "Invalid identity hash");
     DID storage userDID = dids[msg.sender];
 
     userDID.identityHash = _newIdentityHash;
