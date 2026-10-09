@@ -2,6 +2,8 @@
   "name": "did-smart-contract",
   "version": "1.0.0",
   "type": "commonjs",
+  "author": "Raed Bensaid",
+  "license": "MIT",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@nomicfoundation/hardhat-verify": "^2.1.0",
